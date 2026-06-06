@@ -1,9 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="hu">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Múzeumi Kalandjáték</title>
+    <script src="https://unpkg.com/html5-qrcode"></script>
 </head>
 <body>
 
@@ -15,13 +16,17 @@
 
     <div id="jatek" style="display:none;">
 
+        <h3>QR beolvasás</h3>
+        <div id="qr-reader" style="width:300px;"></div>
+        <p id="qr-result"></p>
+
         <h2>Találós kérdés</h2>
 
         <p id="talalos"></p>
 
         <button id="kepBtn">Kép mutatása (-2.5 pont)</button>
 
-        <button id="nevBtn">Név mutatása (-2.5 pont)</button>
+        <button id="nevBtn">Név mutatása (-2.   5 pont)</button>
 
         <br><br>
 
