@@ -20,6 +20,8 @@ const v1 = document.getElementById("v1");
 const v2 = document.getElementById("v2");
 const v3 = document.getElementById("v3");
 
+const scanBtn = document.getElementById("scanBtn");
+
 let kepHasznalva = false;
 let nevHasznalva = false;
 let aktualisTargy;
@@ -85,6 +87,8 @@ const targyak = [
         nev: "Úszógolyó",
 
         kod: "1",
+
+        qr: "https://soundcloud.com/janos-zsigmond-unitarius-kollegium/uszogolyo",
 
         talalos:
             "Egykor a vízszint változásait figyelték vele.",
@@ -247,9 +251,16 @@ v3.addEventListener("click", () => {
 
 function onScanSuccess(decodedText) {
 
+    console.log(decodedText);
+    alert(decodedText);
+
+    if (qr) {
+        qr.stop();
+    }
+
     document.getElementById("qr-result").textContent = decodedText;
 
-    const talalat = targyak.find(t => t.kod === decodedText);
+    const talalat = targyak.find(t => t.qr === decodedText);
 
     if (!talalat) {
         uzenet.textContent = "❌ Hibás QR";
@@ -269,9 +280,13 @@ function onScanSuccess(decodedText) {
     v3.textContent = talalat.valaszok[2];
 }
 
-window.addEventListener("load", () => {
+let qr;
 
-    const qr = new Html5Qrcode("qr-reader");
+scanBtn.addEventListener("click", () => {
+
+    document.getElementById("qr-reader").style.display = "block";
+
+    qr = new Html5Qrcode("qr-reader");
 
     qr.start(
         { facingMode: "environment" },
