@@ -244,3 +244,41 @@ v2.addEventListener("click", () => {
 v3.addEventListener("click", () => {
     ellenorizValasz(2);
 });
+
+function onScanSuccess(decodedText) {
+
+    document.getElementById("qr-result").textContent = decodedText;
+
+    const talalat = targyak.find(t => t.kod === decodedText);
+
+    if (!talalat) {
+        uzenet.textContent = "❌ Hibás QR";
+        return;
+    }
+
+    aktualisTargy = talalat;
+
+    uzenet.textContent = "✅ QR beolvasva: " + talalat.nev;
+
+    quiz.style.display = "block";
+
+    kerdes.textContent = talalat.kerdes;
+
+    v1.textContent = talalat.valaszok[0];
+    v2.textContent = talalat.valaszok[1];
+    v3.textContent = talalat.valaszok[2];
+}
+
+window.addEventListener("load", () => {
+
+    const qr = new Html5Qrcode("qr-reader");
+
+    qr.start(
+        { facingMode: "environment" },
+        {
+            fps: 10,
+            qrbox: 250
+        },
+        onScanSuccess
+    );
+});
