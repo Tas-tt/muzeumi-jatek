@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Múzeumi Kalandjáték</title>
+</head>
+<body>
+
+    <h1 id="cim">Múzeumi Kalandjáték</h1>
+
+    <button id="startBtn">Játék indítása</button>
+
+    <hr>
+
+    <div id="jatek" style="display:none;">
+
+        <h2>Találós kérdés</h2>
+
+        <p id="talalos"></p>
+
+        <button id="kepBtn">Kép mutatása (-2.5 pont)</button>
+
+        <button id="nevBtn">Név mutatása (-2.5 pont)</button>
+
+        <br><br>
+
+        <img id="kep" width="300" style="display:none;">
+
+        <h3 id="nev"></h3>
+
+        <br>
+
+        <input id="kodInput"
+               type="text"
+               placeholder="Írd be a tárgy kódját">
+
+        <button id="checkBtn">
+            Ellenőrzés
+        </button>
+
+        <p id="uzenet"></p>
+
+        <div id="quiz" style="display:none;">
+
+            <h3 id="kerdes"></h3>
+
+            <button id="v1"></button>
+            <button id="v2"></button>
+            <button id="v3"></button>
+
+        </div>
+
+        <h3>Pontszám: <span id="pontszam">15</span></h3>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
