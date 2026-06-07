@@ -1,0 +1,102 @@
+background-color: #e8e1d4;
+
+body {
+	font-family: Arial, sans-serif;
+	text-align: center;
+	background-color: #f4f4f4;
+	margin: 0;
+	padding: 20px;
+}
+
+#jatek {
+	max-width: 800px;
+	margin: auto;
+	background: white;
+	padding: 20px;
+	border-radius: 15px;
+	box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+button {
+	padding: 12px 20px;
+	margin: 5px;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	font-size: 16px;
+}
+
+button:hover {
+		
+	transform: scale(1.05);
+}
+
+.targy-kep {
+	max-width: 100%;
+	border-radius: 10px;
+}
+
+#statusKartya {
+	max-width: 800px;
+	margin: 20px auto 10px auto;
+	background: white;
+	border-radius: 15px;
+	padding: 15px;
+	box-shadow: 0 0 15px rgba(0,0,0,0.2);
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+#vegsoKartya {
+	max-width: 800px;
+	margin: 20px auto 10px auto;
+	background: white;
+	border-radius: 15px;
+	padding: 15px;
+	box-shadow: 0 0 15px rgba(0,0,0,0.2);
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+#qr_karty {
+	max-width: 800px;
+	margin: 20px auto 10px auto;
+	background: white;
+	border-radius: 15px;
+	padding: 15px;
+	box-shadow: 0 0 15px rgba(0,0,0,0.2);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#uzi_karty {
+	max-width: 800px;
+	margin: 20px auto 10px auto;
+	background: white;
+	border-radius: 15px;
+	padding: 15px;
+	box-shadow: 0 0 15px rgba(0,0,0,0.2);
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+#kezdo_karty {
+	max-width: 800px;
+	margin: 20px auto 10px auto;
+	background: white;
+	border-radius: 15px;
+	padding: 15px;
+	box-shadow: 0 0 15px rgba(0,0,0,0.2);
+	display: flex;
+	justify-content:center;
+	align-items: center;
+}
+
+.statusElem {
+	font-size: 22px;
+	font-weight: bold;
+}
