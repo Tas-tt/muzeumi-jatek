@@ -1,38 +1,47 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
+    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Múzeumi Kalandjáték</title>
     <script src="https://unpkg.com/html5-qrcode"></script>
 </head>
 <body>
+    <div id="kezdo_karty" style="display:block;">
 
-    <h1 id="cim">Múzeumi Kalandjáték</h1>
+        <h1 id="cim">Múzeumi Kalandjáték</h1>
 
-    <button id="startBtn">Játék indítása</button>
+        <button id="startBtn">Játék indítása</button>
+
+    </div>
 
     <hr>
 
+    <div id="statusKartya" style="display:none;">
+
+        <div class="statusElem">
+            ⭐ Pontszám:
+            <span id="pontszam">0</span>
+        </div>
+
+        <div class="statusElem">
+            🔑 Kód:
+            <span id="gyujtottKod"></span>
+        </div>
+
+    </div>
+
     <div id="jatek" style="display:none;">
 
-        <h3>QR beolvasás</h3>
-        <button id="scanBtn">
-            📷 Kód beolvasása
-        </button>
-
-        <div id="qr-reader"
-             style="width:100%; max-width:500px; display:none;">
-        </div>
-        <p id="qr-result"></p>
-
+       
         <h2>Találós kérdés</h2>
 
         <p id="talalos"></p>
 
         <button id="kepBtn">Kép mutatása (-2.5 pont)</button>
 
-        <button id="nevBtn">Név mutatása (-2.   5 pont)</button>
+        <button id="nevBtn">Név mutatása (-2. 5 pont)</button>
 
         <br><br>
 
@@ -50,8 +59,6 @@
             Ellenőrzés
         </button>
 
-        <p id="uzenet"></p>
-
         <div id="quiz" style="display:none;">
 
             <h3 id="kerdes"></h3>
@@ -62,10 +69,47 @@
 
         </div>
 
-        <h3>Pontszám: <span id="pontszam">15</span></h3>
+    </div>
+
+    <dov id="uzi_karty" style="display:none">
+
+        <p id="uzenet"></p>
+
+    </dov>
+
+    <div id="qr_karty" style="display:none">
+
+        <h3>QR beolvasás</h3>
+        <button id="scanBtn">
+            📷 Kód beolvasása
+        </button>
+
+        <div id="qr-reader"
+             style="width:100%; max-width:500px; display:none;">
+        </div>
+        <p id="qr-result"></p>
+
 
     </div>
 
+
+    <div id="vegsoKartya" style="display:none;">
+
+        <h2>🚪 KIJÁRAT</h2>
+
+        <p>
+            Írd be az összegyűjtött kódot!
+        </p>
+
+        <input id="vegsoKodInput">
+
+        <br><br>
+
+        <button id="kilepBtn">
+            Kijutás
+        </button>
+
+    </div>
     <script src="script.js"></script>
 
 </body>
