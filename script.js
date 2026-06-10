@@ -119,6 +119,8 @@ function generalKod() {
 }
 function betoltTargy() {
 
+    uzi_karty.style.display = "none";//proba 1 a feleslegesen megjelno div re
+
     aktualisTargy = targyak[aktualisIndex];
 
     console.log("Betöltött index:", aktualisIndex);
@@ -158,9 +160,17 @@ function ellenorizValasz(index) {
         aktualisIndex++;
 
         if (aktualisIndex >= targyak.length) {
+
             showMessage("🏆 Minden tárgyat megtaláltál!");
-            jatek.style.display = "none";
-            vegsoKartya.style.display = "block";
+
+            setTimeout(() => {
+
+                jatek.style.display = "none";
+                qr_karty.style.display = "none";
+                vegsoKartya.style.display = "block";
+
+            }, 2000); // ugyanannyi, mint a showMessage
+
             return;
         }
 
@@ -372,7 +382,11 @@ v3.addEventListener("click", () => {
 
 function onScanSuccess(decodedText) {
 
-    const talalat = targyak.find(t => t.qr === decodedText);
+    console.log(decodedText);
+
+    const talalat = targyak.find(
+        t => decodedText.includes(t.qr)
+    );
 
     if (!talalat) {
         showMessage("❌ Hibás QR, próbáld újra!");
