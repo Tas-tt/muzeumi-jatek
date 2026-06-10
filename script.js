@@ -382,6 +382,8 @@ v3.addEventListener("click", () => {
 
 function onScanSuccess(decodedText) {
 
+    alert(decodedText);
+
     console.log(decodedText);
 
     const talalat = targyak.find(
