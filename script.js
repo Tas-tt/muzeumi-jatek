@@ -1,4 +1,7 @@
 
+const uzi_karty = document.getElementById("uzi_karty");
+const qr_karty = document.getElementById("qr_karty");
+const kezdo_karty = document.getElementById("kezdo_karty");
 const startBtn = document.getElementById("startBtn");
 const kepBtn = document.getElementById("kepBtn");
 const nevBtn = document.getElementById("nevBtn");
@@ -48,6 +51,52 @@ let nevHasznalva = false;
 let aktualisTargy;
 let pontszam = 0;
 let aktualisIndex = 0;
+let qr;
+let qrRunning = false;
+
+function showMessage(text) {
+    uzi_karty.style.display = "flex";
+    uzenet.textContent = text;
+
+    clearTimeout(window.msgTimeout);
+
+    window.msgTimeout = setTimeout(() => {
+        uzi_karty.style.display = "none";
+    }, 2000);
+}
+
+function qrEltuntet() {
+    document.getElementById("qr_karty").style.display = "none";
+}
+
+function qrMutat() {
+    document.getElementById("qr_karty").style.display = "flex";
+}
+
+function inditQuiz(targy) {
+
+    aktualisTargy = targy;
+
+    // 🔴 QR eltüntetése amikor kérdés jön
+    qrEltuntet();
+
+    uzi_karty.style.display = "flex";
+    showMessage("✅ Helyes tárgy!");
+
+    setTimeout(() => {
+
+        uzi_karty.style.display = "none";
+
+        quiz.style.display = "block";
+
+        kerdes.textContent = targy.kerdes;
+
+        v1.textContent = targy.valaszok[0];
+        v2.textContent = targy.valaszok[1];
+        v3.textContent = targy.valaszok[2];
+
+    }, 2000);
+}
 
 function generalKod() {
 
@@ -93,41 +142,36 @@ function betoltTargy() {
 
     kepBtn.disabled = false;
     nevBtn.disabled = false;
+
+    qrMutat();
 }
 
 function ellenorizValasz(index) {
 
     if (index === aktualisTargy.helyesValasz) {
 
-        gyujtottKod +=
-            teljesKod[aktualisIndex];
+        gyujtottKod += teljesKod[aktualisIndex];
+        gyujtottKodElem.textContent = gyujtottKod;
 
-        gyujtottKodElem.textContent =
-            gyujtottKod;
-
-        uzenet.textContent = "✅ Helyes válasz!";
+        showMessage("✅ Helyes válasz!");
 
         aktualisIndex++;
 
         if (aktualisIndex >= targyak.length) {
-
-            uzenet.textContent =
-                "🏆 Minden tárgyat megtaláltál!";
-
+            showMessage("🏆 Minden tárgyat megtaláltál!");
             jatek.style.display = "none";
-
             vegsoKartya.style.display = "block";
-
             return;
         }
 
         setTimeout(() => {
+            quiz.style.display = "none";   // 🔥 EZ HIÁNYZIK
+            qrMutat();                     // 🔥 QR VISSZAJÖN
             betoltTargy();
         }, 700);
 
     } else {
-
-        uzenet.textContent = "❌ Rossz válasz!";
+        showMessage("❌ Rossz válasz!");
     }
 }
 
@@ -215,6 +259,8 @@ startBtn.addEventListener("click", () => {
     gyujtottKodElem.textContent = "";
 
     vegsoKartya.style.display = "none";
+    kezdo_karty.style.display = "none";
+    uzi_karty.style.display = "none";
 
     statusKartya.style.display = "flex";
 
@@ -222,7 +268,6 @@ startBtn.addEventListener("click", () => {
     cim.style.display = "none";
     startBtn.style.display = "none";
     qr_karty.style.display = "flex";
-    uzi_karty.style.display = "flex";
     pontszam = 0;
     pontszamElem.textContent = pontszam;
 
@@ -278,7 +323,7 @@ checkBtn.addEventListener("click", () => {
     v3.style.display = "inline-block";
 
     if (!aktualisTargy) {
-        uzenet.textContent = "Indítsd el a játékot!";
+        showMessage("Indítsd el a játékot!");
         return;
     }
 
@@ -290,20 +335,27 @@ checkBtn.addEventListener("click", () => {
         pontszam += 10;
         pontszamElem.textContent = pontszam;
 
-        uzenet.textContent = "✅ Helyes tárgy!";
+        showMessage("✅ Helyes tárgy!");
 
-        quiz.style.display = "block";
+        qrEltuntet(); 
 
-        kerdes.textContent = aktualisTargy.kerdes;
+        setTimeout(() => {
 
-        v1.textContent = aktualisTargy.valaszok[0];
-        v2.textContent = aktualisTargy.valaszok[1];
-        v3.textContent = aktualisTargy.valaszok[2];
+            quiz.style.display = "block";
+
+            kerdes.textContent = aktualisTargy.kerdes;
+
+            v1.textContent = aktualisTargy.valaszok[0];
+            v2.textContent = aktualisTargy.valaszok[1];
+            v3.textContent = aktualisTargy.valaszok[2];
+
+        }, 2000);
 
     } else {
 
-        uzenet.textContent = "❌ Hibás kód!";
+        showMessage("❌ Hibás kód!");
     }
+
 });
 
 v1.addEventListener("click", () => {
@@ -322,35 +374,18 @@ function onScanSuccess(decodedText) {
 
     const talalat = targyak.find(t => t.qr === decodedText);
 
-    // ❌ HA ROSSZ QR
     if (!talalat) {
-        uzenet.textContent = "❌ Hibás QR, próbáld újra!";
-        return; // kamera fut tovább
+        showMessage("❌ Hibás QR, próbáld újra!");
+        return;
     }
 
-    // ✅ HA JÓ QR → kamera leáll
     if (qr) {
         qr.stop();
         qrRunning = false;
     }
 
-    // játék betöltése
-    aktualisTargy = talalat;
-
-    uzenet.textContent = "";
-
-    quiz.style.display = "block";
-
-    kerdes.textContent = talalat.kerdes;
-
-    v1.textContent = talalat.valaszok[0];
-    v2.textContent = talalat.valaszok[1];
-    v3.textContent = talalat.valaszok[2];
+    inditQuiz(talalat);
 }
-
-let qr;
-
-let qrRunning = false;
 
 scanBtn.addEventListener("click", () => {
 
@@ -375,17 +410,17 @@ scanBtn.addEventListener("click", () => {
 kilepBtn.addEventListener("click", () => {
 
     if (
-        vegsoKodInput.value.toUpperCase() ===
-        teljesKod
+        vegsoKodInput.value.toUpperCase() === teljesKod
     ) {
 
-        uzenet.textContent =
-            "🎉 Sikeresen kijutottál a múzeumból!";
+        jatek.style.display = "none";
+        qr_karty.style.display = "none";
+        statusKartya.style.display = "none";
+        vegsoKartya.style.display = "none";
+
+        document.getElementById("vegeUzenet").style.display = "flex";
 
     } else {
-
-        uzenet.textContent =
-            "❌ Hibás kód!";
+        showMessage("❌ Hibás kód!");
     }
-
 });
