@@ -5,7 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Múzeumi Kalandjáték</title>
-    <script src="https://unpkg.com/html5-qrcode"></script>
+    <script type="module">
+        import QrScanner from "https://cdn.jsdelivr.net/npm/qr-scanner@1.4.2/qr-scanner.min.js";
+        window.QrScanner = QrScanner;
+    </script>
 </head>
 <body>
     <div id="kezdo_karty" style="display:block;">
@@ -84,9 +87,8 @@
             📷 Kód beolvasása
         </button>
 
-        <div id="qr-reader"
-             style="width:100%; max-width:500px; display:none;">
-        </div>
+        <video id="qr-reader"
+               style="width:100%;max-width:500px;display:none;"></video>
         <p id="qr-result"></p>
 
 
