@@ -161,18 +161,18 @@ function ellenorizValasz(index) {
 
         if (aktualisIndex >= targyak.length) {
 
-            showMessage("🏆 Minden tárgyat megtaláltál!");
+    showMessage("🏆 Minden tárgyat megtaláltál!");
 
-            setTimeout(() => {
+    setTimeout(() => {
 
-                jatek.style.display = "none";
-                qr_karty.style.display = "none";
-                vegsoKartya.style.display = "block";
+        jatek.style.display = "none";
+        qr_karty.style.display = "none";
+        vegsoKartya.style.display = "block";
 
-            }, 2000); // ugyanannyi, mint a showMessage
+    }, 2000); // ugyanannyi, mint a showMessage
 
-            return;
-        }
+    return;
+}
 
         setTimeout(() => {
             quiz.style.display = "none";   // 🔥 EZ HIÁNYZIK
@@ -382,13 +382,7 @@ v3.addEventListener("click", () => {
 
 function onScanSuccess(decodedText) {
 
-    alert(decodedText);
-
-    console.log(decodedText);
-
-    const talalat = targyak.find(
-        t => decodedText.includes(t.qr)
-    );
+    const talalat = targyak.find(t => t.qr === decodedText);
 
     if (!talalat) {
         showMessage("❌ Hibás QR, próbáld újra!");
@@ -416,8 +410,8 @@ scanBtn.addEventListener("click", () => {
     qr.start(
         { facingMode: "environment" },
         {
-            fps: 10,
-            qrbox: 250
+            fps: 5,
+            qrbox: { width: 350, height: 350 }
         },
         onScanSuccess
     );
