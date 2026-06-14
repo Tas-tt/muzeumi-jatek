@@ -53,6 +53,7 @@ let pontszam = 0;
 let aktualisIndex = 0;
 let qr;
 let qrRunning = false;
+let scanner;
 
 function showMessage(text) {
     uzi_karty.style.display = "flex";
@@ -258,8 +259,10 @@ const targyak = [
 
 startBtn.addEventListener("click", () => {
 
-    if (qr) {
-        qr.stop();
+    if (scanner) {
+        scanner.stop();
+        scanner.destroy();
+        scanner = null;
     }
 
     generalKod();
@@ -389,32 +392,49 @@ function onScanSuccess(decodedText) {
         return;
     }
 
-    if (qr) {
-        qr.stop();
-        qrRunning = false;
+    if (scanner) {
+        scanner.stop();
+        scanner.destroy();
+        scanner = null;
     }
+
+    qrRunning = false;
 
     inditQuiz(talalat);
 }
 
-scanBtn.addEventListener("click", () => {
-
+scanBtn.addEventListener("click", async () => {
     if (qrRunning) return;
 
     qrRunning = true;
 
-    document.getElementById("qr-reader").style.display = "block";
+    const video = document.getElementById("qr-reader");
+    video.style.display = "block";
 
-    qr = new Html5Qrcode("qr-reader");
+    scanner = new QrScanner(
+        video,
+        result => {
+            const text =
+                typeof result === "string"
+                    ? result
+                    : result.data;
 
-    qr.start(
-        { facingMode: "environment" },
-        {
-            fps: 5,
-            qrbox: { width: 350, height: 350 }
+            onScanSuccess(text);
         },
-        onScanSuccess
+        {
+            returnDetailedScanResult: true,
+            highlightScanRegion: true,
+            highlightCodeOutline: true
+        }
     );
+
+    try {
+        await scanner.start();
+    } catch (err) {
+        console.error("Kamera hiba:", err);
+        showMessage("❌ Nem sikerült elindítani a kamerát");
+        qrRunning = false;
+    }
 });
 
 kilepBtn.addEventListener("click", () => {
