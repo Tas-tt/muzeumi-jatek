@@ -1,131 +1,343 @@
 <!DOCTYPE html>
 <html lang="hu">
+
 <head>
-    <link rel="stylesheet" href="style.css">
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
     <title>Múzeumi Kalandjáték</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <!-- ==================================================
+         QR SCANNER
+         ================================================== -->
+
     <script type="module">
-        import QrScanner from "https://cdn.jsdelivr.net/npm/qr-scanner@1.4.2/qr-scanner.min.js";
+
+        import QrScanner
+            from "https://cdn.jsdelivr.net/npm/qr-scanner@1.4.2/qr-scanner.min.js";
+
         window.QrScanner = QrScanner;
+
     </script>
+
 </head>
+
+
 <body>
-    <div id="kezdo_karty" style="display:block;">
-
-        <h1 id="cim">Múzeumi Kalandjáték</h1>
-
-        <button id="startBtn">Játék indítása</button>
-
-    </div>
-
-    <hr>
-
-    <div id="statusKartya" style="display:none;">
-
-        <div class="statusElem">
-            ⭐ Pontszám:
-            <span id="pontszam">0</span>
-        </div>
-
-        <div class="statusElem">
-            🔑 Kód:
-            <span id="gyujtottKod"></span>
-        </div>
-
-    </div>
-
-    <div id="jatek" style="display:none;">
 
 
-<div id="keresesKartya">
+    <!-- ==================================================
+         KEZDŐKÉPERNYŐ
+         ================================================== -->
 
-    <div id="talalosKartya">
+    <div
+        id="kezdo_karty"
+        style="display:block;"
+    >
 
-        <h2>Találós kérdés</h2>
-
-        <p id="talalos"></p>
-
-    </div>
+        <h1 id="cim">
+            Múzeumi Kalandjáték
+        </h1>
 
 
-    <div id="segitsegKartya">
+        <!-- ==========================================
+             ÚJ JÁTÉK
+             ========================================== -->
 
-        <h3>💡 Segítségek</h3>
+        <button id="startBtn">
+            ▶️ Új játék
+        </button>
 
-        <div id="segitsegGombok">
 
-            <button id="kepBtn">
-                🖼️ Kép mutatása (-2.5 pont)
-            </button>
+        <!-- ==========================================
+             JÁTÉK FOLYTATÁSA
+             ========================================== -->
 
-            <button id="nevBtn">
-                🏷️ Név mutatása (-2.5 pont)
-            </button>
-
-        </div>
-
-        <img
-            id="kep"
-            width="300"
+        <button
+            id="folytatasBtn"
             style="display:none;"
         >
+            🔄 Játék folytatása
+        </button>
 
-        <h3 id="nev"></h3>
 
-    </div>
+        <!-- ==========================================
+             MENTÉS INFORMÁCIÓ
+             ========================================== -->
 
-</div>
-
-        <br>
-
-        <div id="pinKartya">
-
-            <h3>🔢 Tárgy PIN-kódja</h3>
-
-            <p>
-                Ha megtaláltad a tárgyat, írd be a rajta található PIN-kódot!
-            </p>
-
-            <input id="pinInput"
-                   type="text"
-                   inputmode="numeric"
-                   placeholder="Írd be a PIN-kódot">
-
-            <button id="checkPinBtn">
-                Ellenőrzés
-            </button>
-
-        </div>
-
-        <div id="quiz" style="display:none;">
-
-            <h3 id="kerdes"></h3>
-
-            <button id="v1"></button>
-            <button id="v2"></button>
-            <button id="v3"></button>
-
-        </div>
+        <p
+            id="mentesInfo"
+            style="display:none;"
+        >
+            💾 Van egy korábbi mentett játékod.
+        </p>
 
     </div>
 
-    <div id="uzi_karty" style="display:none">
+
+
+    <!-- ==================================================
+         ÜZENET KÁRTYA
+         ================================================== -->
+
+    <div
+        id="uzi_karty"
+        style="display:none;"
+    >
 
         <p id="uzenet"></p>
 
     </div>
 
-    <div id="qr_karty" style="display:none">
 
-        <h3>QR beolvasás</h3>
+
+    <hr>
+
+
+
+    <!-- ==================================================
+         JÁTÉK STÁTUSZ
+         ================================================== -->
+
+    <div
+        id="statusKartya"
+        style="display:none;"
+    >
+
+        <div class="statusElem">
+
+            ⭐ Pontszám:
+
+            <span id="pontszam">
+                0
+            </span>
+
+        </div>
+
+
+        <div class="statusElem">
+
+            🔑 Kód:
+
+            <span id="gyujtottKod"></span>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ==================================================
+         JÁTÉK
+         ================================================== -->
+
+    <div
+        id="jatek"
+        style="display:none;"
+    >
+
+
+        <!-- ==========================================
+             KERESÉSI RÉSZ
+             ========================================== -->
+
+        <div id="keresesKartya">
+
+
+            <!-- ======================================
+                 TALÁLÓS KÉRDÉS / SEGÍTSÉG
+                 ====================================== -->
+
+            <div id="talalosKartya">
+
+                <h2>
+                    Találós kérdés
+                </h2>
+
+                <p id="talalos"></p>
+
+            </div>
+
+
+
+            <!-- ======================================
+                 SEGÍTSÉGEK
+                 ====================================== -->
+
+            <div id="segitsegKartya">
+
+                <h3>
+                    💡 Segítségek
+                </h3>
+
+
+                <div id="segitsegGombok">
+
+
+                    <!-- KÉP -->
+
+                    <button id="kepBtn">
+
+                        🖼️ Kép mutatása
+                        <br>
+
+                        (-2.5 pont)
+
+                    </button>
+
+
+
+                    <!-- NÉV -->
+
+                    <button id="nevBtn">
+
+                        🏷️ Név mutatása
+                        <br>
+
+                        (-2.5 pont)
+
+                    </button>
+
+
+                </div>
+
+
+
+                <!-- SEGÍTSÉGKÉP -->
+
+                <img
+                    id="kep"
+                    width="300"
+                    style="display:none;"
+                    alt="Segítségkép"
+                >
+
+
+                <!-- TÁRGY NEVE -->
+
+                <h3 id="nev"></h3>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ==================================================
+             PIN KÁRTYA
+             ================================================== -->
+
+        <div
+            id="pinKartya"
+            style="display:none;"
+        >
+
+            <h3>
+                🔢 Tárgy PIN-kódja
+            </h3>
+
+
+            <p>
+
+                Ha megtaláltad a tárgyat,
+                írd be a rajta található PIN-kódot!
+
+            </p>
+
+
+            <input
+                id="pinInput"
+                type="text"
+                inputmode="numeric"
+                autocomplete="off"
+                placeholder="Írd be a PIN-kódot"
+            >
+
+
+            <button id="checkPinBtn">
+
+                Ellenőrzés
+
+            </button>
+
+        </div>
+
+
+
+        <!-- ==================================================
+             QUIZ
+             ================================================== -->
+
+        <div
+            id="quiz"
+            style="display:none;"
+        >
+
+            <h3 id="kerdes"></h3>
+
+
+            <button id="v1"></button>
+
+            <button id="v2"></button>
+
+            <button id="v3"></button>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- ==================================================
+         QR KÁRTYA
+         ================================================== -->
+
+    <div
+        id="qr_karty"
+        style="display:none;"
+    >
+
+        <h3>
+            📷 QR beolvasás
+        </h3>
+
+
         <button id="scanBtn">
+
             📷 Kód beolvasása
+
         </button>
 
+
+
+        <!-- ==========================================
+             QR KAMERA
+             ========================================== -->
+
         <div class="qr-box">
-            <video id="qr-reader"></video>
+
+            <video
+                id="qr-reader"
+                playsinline
+            ></video>
+
         </div>
+
+
+
+        <!-- QR EREDMÉNY -->
 
         <p id="qr-result"></p>
 
@@ -133,28 +345,80 @@
     </div>
 
 
-    <div id="vegsoKartya" style="display:none;">
 
-        <h2>🚪 KIJÁRAT</h2>
+    <!-- ==================================================
+         VÉGSŐ KÓD / KIJÁRAT
+         ================================================== -->
+
+    <div
+        id="vegsoKartya"
+        style="display:none;"
+    >
+
+        <h2>
+            🚪 KIJÁRAT
+        </h2>
+
 
         <p>
+
             Írd be az összegyűjtött kódot!
+
         </p>
 
-        <input id="vegsoKodInput">
 
-        <br><br>
+        <input
+            id="vegsoKodInput"
+            type="text"
+            autocomplete="off"
+            autocapitalize="characters"
+            placeholder="Kijutási kód"
+        >
+
+
+        <br>
+        <br>
+
 
         <button id="kilepBtn">
-            Kijutás
+
+            🔓 Kijutás
+
         </button>
 
+
+        <!-- HIBÁS VÉGSŐ KÓD -->
+
+        <p
+            id="vegeUzenet"
+            style="display:none;"
+        ></p>
+
     </div>
+
+
+
+    <!-- ==================================================
+         JAVASCRIPT
+         ================================================== -->
+
     <script src="script.js"></script>
 
-    <div id="vegeUzenet">
+
+    <!-- ==================================================
+         BIZTONSÁGI / KIEGÉSZÍTŐ VÉGEÜZENET
+         ================================================== -->
+
+    <div
+        id="vegeUzenetLegacy"
+        style="display:none;"
+    >
+
         🎉 Sikeresen kijutottál a játékból!
+
     </div>
 
+
 </body>
+
 </html>
