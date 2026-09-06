@@ -1,215 +1,871 @@
-background-color: #e8e1d4;
+/* =====================================================
+   MÚZEUMI KALANDJÁTÉK – FIX VILÁGOS DESIGN
+   ===================================================== */
+
+/* =====================================================
+   ALAP
+   ===================================================== */
+
+* {
+    box-sizing: border-box;
+    color-scheme: light;
+}
+
+html {
+    min-height: 100%;
+    color-scheme: light;
+}
 
 body {
-	font-family: Arial, sans-serif;
-	text-align: center;
-	background-color: #f4f4f4;
-	margin: 0;
-	padding: 20px;
+    margin: 0;
+    min-height: 100vh;
+    padding: 20px;
+
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+
+    color: #2f2418;
+
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(255,255,255,0.35),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #d8c7a5,
+            #efe6d2 45%,
+            #cdbb95
+        );
 }
 
-#jatek {
-	max-width: 800px;
-	margin: auto;
-	background: white;
-	padding: 20px;
-	border-radius: 15px;
-	box-shadow: 0 0 15px rgba(0,0,0,0.2);
+
+/* =====================================================
+   FŐ KÁRTYÁK
+   ===================================================== */
+
+#kezdo_karty,
+#jatek,
+#statusKartya,
+#qr_karty,
+#vegsoKartya,
+#uzi_karty,
+#vegeUzenet,
+#pinKartya {
+
+    width: min(92%, 800px);
+
+    margin: 18px auto;
+
+    background: rgba(255,250,240,0.96);
+
+    border: 2px solid #8b6f47;
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 10px 30px rgba(70,50,20,0.25);
+
+    padding: 22px;
 }
+
+
+/* =====================================================
+   CÍMEK
+   ===================================================== */
+
+h1 {
+    margin-top: 5px;
+
+    font-size: clamp(30px, 6vw, 48px);
+
+    color: #5c3b16;
+
+    letter-spacing: 1px;
+}
+
+h2 {
+    color: #6b4518;
+}
+
+h3 {
+    color: #79531f;
+}
+
+
+/* =====================================================
+   INDÍTÓ KÁRTYA
+   ===================================================== */
+
+#kezdo_karty {
+
+    padding: 45px 20px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+}
+
+#kezdo_karty h1 {
+    margin-bottom: 30px;
+}
+
+
+/* =====================================================
+   GOMBOK
+   ===================================================== */
 
 button {
-	padding: 12px 20px;
-	margin: 5px;
-	border: none;
-	border-radius: 10px;
-	cursor: pointer;
-	font-size: 16px;
+
+    appearance: none;
+
+    border: none;
+
+    margin: 7px;
+
+    padding: 13px 22px;
+
+    border-radius: 14px;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    color: white !important;
+
+    background:
+        linear-gradient(
+            180deg,
+            #9b783f,
+            #75531f
+        );
+
+    box-shadow:
+        0 5px 0 #513814,
+        0 8px 18px rgba(0,0,0,0.18);
+
+    transition:
+        transform .18s ease,
+        box-shadow .18s ease,
+        filter .18s ease;
 }
 
 button:hover {
-		
-	transform: scale(1.05);
+
+    transform: translateY(-2px);
+
+    filter: brightness(1.08);
 }
 
-.targy-kep {
-	max-width: 100%;
-	border-radius: 10px;
+button:active {
+
+    transform: translateY(2px);
+
+    box-shadow:
+        0 2px 0 #513814,
+        0 4px 8px rgba(0,0,0,.18);
 }
+
+button:disabled {
+
+    opacity: .5;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
+/* =====================================================
+   ELVÁLASZTÓ
+   ===================================================== */
+
+hr {
+
+    border: none;
+
+    height: 2px;
+
+    width: min(92%,800px);
+
+    margin: 25px auto;
+
+    background:
+        linear-gradient(
+            to right,
+            transparent,
+            #8b6f47,
+            transparent
+        );
+}
+
+
+/* =====================================================
+   STÁTUSZ
+   ===================================================== */
 
 #statusKartya {
-	max-width: 800px;
-	margin: 20px auto 10px auto;
-	background: white;
-	border-radius: 15px;
-	padding: 15px;
-	box-shadow: 0 0 15px rgba(0,0,0,0.2);
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-}
 
-#vegsoKartya {
-	max-width: 800px;
-	margin: 20px auto 10px auto;
-	background: white;
-	border-radius: 15px;
-	padding: 15px;
-	box-shadow: 0 0 15px rgba(0,0,0,0.2);
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-}
+    display: flex;
 
-#qr_karty {
-	max-width: 800px;
-	margin: 20px auto 10px auto;
-	background: white;
-	border-radius: 15px;
-	padding: 15px;
-	box-shadow: 0 0 15px rgba(0,0,0,0.2);
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	gap: 10px;
-}
+    justify-content: space-around;
 
-.qr-box {
-	display: none;
-}
+    align-items: center;
 
-	.qr-box.show {
-		display: block;
-	}
+    gap: 20px;
 
-#qr-reader {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	display: block;
-}
-
-#uzi_karty {
-	max-width: 800px;
-	margin: 20px auto 10px auto;
-	background: white;
-	border-radius: 15px;
-	padding: 15px;
-	box-shadow: 0 0 15px rgba(0,0,0,0.2);
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-}
-
-#kezdo_karty {
-	max-width: 800px;
-	margin: 20px auto 10px auto;
-	background: white;
-	border-radius: 15px;
-	padding: 15px;
-	box-shadow: 0 0 15px rgba(0,0,0,0.2);
-	display: flex;
-	justify-content:center;
-	align-items: center;
+    background:
+        linear-gradient(
+            135deg,
+            #fff8e8,
+            #ead8b6
+        );
 }
 
 .statusElem {
-	font-size: 22px;
-	font-weight: bold;
+
+    font-size: clamp(17px,4vw,23px);
+
+    font-weight: bold;
 }
 
-#vegeUzenet {
-	max-width: 800px;
-	margin: 20px auto;
-	background: white;
-	border-radius: 15px;
-	padding: 20px;
-	box-shadow: 0 0 15px rgba(0,0,0,0.2);
-	display: none; /* alapból rejtve */
-
-	justify-content: center;
-	align-items: center;
-	font-size: 24px;
-	font-weight: bold;
-	text-align: center;
+#pontszam {
+    color: #1d6b36;
 }
 
-/* ==========================================
-   ROSSZ QUIZ VÁLASZ
-   ========================================== */
+#gyujtottKod {
 
-#quiz button.rosszValasz {
-    opacity: 0.55;
-    transform: translateY(3px) scale(0.98);
-    cursor: not-allowed;
-    box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.25);
+    color: #8a4f00;
+
+    letter-spacing: 3px;
+
+    font-family: monospace;
 }
 
-#gyozelemKartya {
-    position: fixed;
-    inset: 0;
+
+/* =====================================================
+   TALÁLÓS KÉRDÉS
+   ===================================================== */
+
+#keresesKartya {
 
     display: flex;
-    justify-content: center;
-    align-items: center;
 
-    background: rgba(0, 0, 0, 0.92);
+    flex-direction: column;
 
-    z-index: 99999;
-
-    padding: 20px;
-    box-sizing: border-box;
+    gap: 18px;
 }
 
-.gyozelem-tartalom {
-    width: min(90%, 600px);
+#talalosKartya {
 
-    padding: 40px 25px;
+    background: #f7efd9;
+
+    border-radius: 16px;
+
+    border: 2px solid #8b6f47;
+
+    padding: 18px;
+
+    box-shadow:
+        inset 0 0 15px rgba(120,80,20,.08);
+}
+
+#talalos {
+
+    font-size: 19px;
+
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   SEGÍTSÉGEK
+   ===================================================== */
+
+#segitsegKartya {
+
+    background: #fffaf0;
+
+    border-radius: 16px;
+
+    padding: 18px;
+}
+
+#segitsegGombok {
+
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+}
+
+#kep {
+  
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+
+    margin-top: 18px;
+
+    max-width: 100%;
+
+    width: 320px;
+
+    border-radius: 16px;
+
+    border: 4px solid #8b6f47;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.2);
+}
+
+#nev {
+
+    margin-top: 18px;
+
+    color: #6b4518;
+
+    font-size: 22px;
+}
+
+
+/* =====================================================
+   QR
+   ===================================================== */
+
+#qr_karty {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 14px;
+}
+
+.qr-box {
+
+    display: none;
+
+    width: 100%;
+
+    overflow: hidden;
+
+    border-radius: 18px;
+
+    border: 3px solid #8b6f47;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.25);
+}
+
+.qr-box.show {
+    display: block;
+}
+
+#qr-reader {
+
+    width: 100%;
+
+    display: block;
+}
+
+#qr-result {
+
+    min-height: 24px;
+
+    font-weight: bold;
+
+    color: #6b4518;
+}
+
+
+/* =====================================================
+   INPUTOK
+   ===================================================== */
+
+#pinKartya input,
+#vegsoKodInput {
+
+    width: min(100%,400px);
+
+    padding: 14px;
+
+    border-radius: 12px;
+
+    border: 2px solid #b69a68;
+
+    font-size: 18px;
 
     text-align: center;
 
-    background: #ffffff;
-    color: #111111;
+    outline: none;
 
-    border-radius: 25px;
+    color: #2f2418 !important;
+
+    background: #fffdf7 !important;
+}
+
+#pinKartya input:focus,
+#vegsoKodInput:focus {
+
+    border-color: #79531f;
 
     box-shadow:
-        0 20px 60px rgba(0, 0, 0, 0.5);
+        0 0 0 4px rgba(121,83,31,.15);
+}
+
+#pinKartya input::placeholder,
+#vegsoKodInput::placeholder {
+    color: #806f58;
+}
+
+
+/* =====================================================
+   QUIZ
+   ===================================================== */
+
+#quiz {
+
+    width: 100%;
+
+    margin-top: 20px;
+
+    padding: 20px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fffaf0,
+            #f2e5c8
+        );
+
+    border: 2px solid #b69a68;
+}
+
+#kerdes {
+
+    font-size: 22px;
+
+    line-height: 1.5;
+
+    margin-bottom: 20px;
+}
+
+#quiz button {
+
+    display: block;
+
+    width: min(100%,600px);
+
+    margin: 12px auto;
+
+    color: white !important;
+
+    background:
+        linear-gradient(
+            180deg,
+            #6f8f4e,
+            #4f6d32
+        );
+
+    box-shadow:
+        0 5px 0 #385022,
+        0 8px 16px rgba(0,0,0,.16);
+}
+
+
+/* =====================================================
+   ROSSZ VÁLASZ
+   ===================================================== */
+
+#quiz button.rosszValasz {
+
+    background:
+        linear-gradient(
+            180deg,
+            #b85b5b,
+            #843939
+        );
+
+    opacity: .65;
+
+    box-shadow:
+        inset 0 3px 8px rgba(0,0,0,.3);
+
+    transform: none;
+}
+
+
+/* =====================================================
+   ÜZENET
+   ===================================================== */
+
+#uzi_karty {
+
+    position: fixed;
+
+    left: 50%;
+
+    bottom: 25px;
+
+    transform: translateX(-50%);
+
+    width: min(90%,600px);
+
+    z-index: 9999;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff8df,
+            #f3dfad
+        );
+
+    border: 2px solid #9b783f;
+
+    color: #2f2418;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    animation: feluszas .3s ease;
+}
+
+@keyframes feluszas {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translate(-50%,30px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translate(-50%,0);
+    }
+}
+
+
+/* =====================================================
+   KIJÁRAT
+   ===================================================== */
+
+#vegsoKartya {
+
+    padding: 30px;
+}
+
+#vegsoKartya h2 {
+
+    font-size: 30px;
+}
+
+#vegeUzenet {
+
+    font-size: 24px;
+
+    font-weight: bold;
+}
+
+
+/* =====================================================
+   GYŐZELEM
+   ===================================================== */
+
+#gyozelemKartya {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 20px;
+
+    background:
+        rgba(35,25,10,.92);
+
+    z-index: 99999;
+}
+
+.gyozelem-tartalom {
+
+    width: min(92%,600px);
+
+    padding: 40px 25px;
+
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff9ea,
+            #ead8ae
+        );
+
+    border: 3px solid #b08a4a;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.45);
+
+    animation: gyozelem .5s ease;
+}
+
+@keyframes gyozelem {
+
+    from {
+
+        transform: scale(.8);
+
+        opacity: 0;
+    }
+
+    to {
+
+        transform: scale(1);
+
+        opacity: 1;
+    }
 }
 
 .gyozelem-ikon {
-    font-size: 70px;
-    margin-bottom: 10px;
+      color: #6b4518;
+
+}
+  
+.gyozelem-ikon svg {
+    width: 180px;
+    height: 180px;
+
 }
 
 .gyozelem-tartalom h1 {
-    font-size: 35px;
-    margin: 10px 0;
+    color: #6b4518;
 }
 
 .gyozelem-tartalom h2 {
-    font-size: 25px;
-    margin: 20px 0;
+    color: #8a5a13;
 }
 
 .gyozelem-tartalom p {
+
     font-size: 18px;
-    line-height: 1.5;
+
+    line-height: 1.6;
 }
 
 .vegso-pontszam {
+
     margin-top: 25px;
-    padding: 15px;
 
-    border-radius: 15px;
+    padding: 18px;
 
-    background: #f0f0f0;
+    border-radius: 18px;
+
+    background: rgba(255,255,255,.65);
+
+    border: 1px solid #c9ab73;
 
     font-size: 20px;
 }
 
 .vegso-pontszam strong {
+
     display: block;
-    font-size: 28px;
-    margin-top: 5px;
+
+    margin-top: 8px;
+
+    font-size: 34px;
+
+    color: #1d6b36;
+}
+
+
+/* =====================================================
+   MOBIL
+   ===================================================== */
+
+@media (max-width:600px) {
+
+    body {
+        padding: 10px;
+    }
+
+    #kezdo_karty,
+    #jatek,
+    #statusKartya,
+    #qr_karty,
+    #vegsoKartya,
+    #uzi_karty,
+    #pinKartya {
+
+        width: 100%;
+    }
+
+    #statusKartya {
+
+        flex-direction: column;
+
+        gap: 8px;
+    }
+
+    button {
+
+        width: 100%;
+
+        margin: 6px 0;
+    }
+
+    #segitsegGombok {
+
+        flex-direction: column;
+    }
+
+    #kerdes {
+
+        font-size: 19px;
+    }
+
+    #talalos {
+
+        font-size: 17px;
+    }
+}
+
+
+/* =====================================================
+   INDÍTÓ GOMBOK
+   ===================================================== */
+
+#kezdo_karty button {
+
+    display: block;
+
+    margin: 10px auto;
+  }
+
+/* =====================================================
+   EGYSÉGES MONOKRÓM SVG IKONOK
+   ===================================================== */
+
+.ikon {
+    width: 18px;
+    height: 18px;
+
+    flex: 0 0 18px;
+
+    display: inline-block;
+
+    vertical-align: -4px;
+
+    margin-right: 6px;
+
+    fill: none;
+
+    stroke: currentColor;
+
+    stroke-width: 1.8;
+
+    stroke-linecap: round;
+
+    stroke-linejoin: round;
+}
+
+
+/* GOMBOK */
+
+button .ikon {
+    width: 22px;
+    height: 22px;
+
+    color: #ffffff;
+
+    vertical-align: -4px;
+}
+
+
+/* CÍMEK */
+
+h2 .ikon,
+h3 .ikon {
+    color: #79531f;
+    width: 25px;
+    height: 25px;
+}
+
+
+/* STÁTUSZ */
+
+.statusElem .ikon {
+  width: 25px;
+  height: 25px;
+    color: #79531f;
+}
+
+
+/* SZÖVEGES INFORMÁCIÓ */
+
+.ikon-szoveg {
+    width: 17px;
+    height: 17px;
+
+    vertical-align: -4px;
+
+    margin-right: 5px;
+}
+
+
+/* KIJÁRAT IKON */
+
+.ikon-nagy {
+    width: 22px;
+    height: 22px;
+
+    vertical-align: -5px;
+
+    margin-right: 7px;
+}
+
+/* =====================================================
+   SEGÍTSÉG GOMBOK – NAGY IKON
+   ===================================================== */
+
+#segitsegGombok button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+#segitsegGombok button .ikon {
+    width: 36px;
+    height: 36px;
+
+    flex: 0 0 36px;
+
+    margin-right: 0;
+}
+
+#segitsegGombok button span {
+    display: inline-block;
+    text-align: center;
+    line-height: 1.35;
 }
