@@ -55,7 +55,13 @@
              ========================================== -->
 
         <button id="startBtn">
-            ▶️ Új játék
+
+            <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M8 5l11 7-11 7V5z"/>
+            </svg>
+
+            <span>Új játék</span>
+
         </button>
 
 
@@ -67,7 +73,16 @@
             id="folytatasBtn"
             style="display:none;"
         >
-            🔄 Játék folytatása
+
+            <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20 11a8 8 0 0 0-14.5-4"/>
+                <path d="M5 3v5h5"/>
+                <path d="M4 13a8 8 0 0 0 14.5 4"/>
+                <path d="M19 21v-5h-5"/>
+            </svg>
+
+            <span>Játék folytatása</span>
+
         </button>
 
 
@@ -79,7 +94,15 @@
             id="mentesInfo"
             style="display:none;"
         >
-            💾 Van egy korábbi mentett játékod.
+
+            <svg class="ikon ikon-szoveg" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 3h11l3 3v15H5z"/>
+                <path d="M8 3v6h8V3"/>
+                <path d="M8 21v-6h8v6"/>
+            </svg>
+
+            <span>Van egy korábbi mentett játékod.</span>
+
         </p>
 
     </div>
@@ -116,7 +139,11 @@
 
         <div class="statusElem">
 
-            ⭐ Pontszám:
+            <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 3l2.6 5.4 5.9.9-4.3 4.2 1 5.9-5.2-2.8-5.2 2.8 1-5.9-4.3-4.2 5.9-.9L12 3z"/>
+            </svg>
+
+            <span>Pontszám:</span>
 
             <span id="pontszam">
                 0
@@ -127,7 +154,14 @@
 
         <div class="statusElem">
 
-            🔑 Kód:
+            <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="8" cy="15" r="4"/>
+                <path d="M11 12l8-8"/>
+                <path d="M16 7l2 2"/>
+                <path d="M18 5l2 2"/>
+            </svg>
+
+            <span>Kód:</span>
 
             <span id="gyujtottKod"></span>
 
@@ -174,63 +208,54 @@
                  SEGÍTSÉGEK
                  ====================================== -->
 
-            <div id="segitsegKartya">
+<div id="segitsegKartya">
 
-                <h3>
-                    💡 Segítségek
-                </h3>
+    <div id="segitsegGombok">
 
+        <button id="kepBtn">
 
-                <div id="segitsegGombok">
+            <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="16" rx="2"/>
+                <circle cx="8" cy="9" r="1.5"/>
+                <path d="M3 17l5-5 4 4 3-3 6 6"/>
+            </svg>
 
+            <span>
+                Kép mutatása
+                <br>
+                (-2.5 pont)
+            </span>
 
-                    <!-- KÉP -->
-
-                    <button id="kepBtn">
-
-                        🖼️ Kép mutatása
-                        <br>
-
-                        (-2.5 pont)
-
-                    </button>
-
+        </button>
 
 
-                    <!-- NÉV -->
+        <button id="nevBtn">
 
-                    <button id="nevBtn">
+            <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 4h7l9 9-7 7-9-9V4z"/>
+                <circle cx="8" cy="8" r="1.3"/>
+            </svg>
 
-                        🏷️ Név mutatása
-                        <br>
+            <span>
+                Név mutatása
+                <br>
+                (-2.5 pont)
+            </span>
 
-                        (-2.5 pont)
+        </button>
 
-                    </button>
+    </div>
 
+    <img
+        id="kep"
+        width="300"
+        style="display:none;"
+        alt="Segítségkép"
+    >
 
-                </div>
+    <h3 id="nev"></h3>
 
-
-
-                <!-- SEGÍTSÉGKÉP -->
-
-                <img
-                    id="kep"
-                    width="300"
-                    style="display:none;"
-                    alt="Segítségkép"
-                >
-
-
-                <!-- TÁRGY NEVE -->
-
-                <h3 id="nev"></h3>
-
-
-            </div>
-
-        </div>
+</div>
 
 
 
@@ -244,7 +269,21 @@
         >
 
             <h3>
-                🔢 Tárgy PIN-kódja
+
+                <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="7" cy="7" r="1"/>
+                    <circle cx="12" cy="7" r="1"/>
+                    <circle cx="17" cy="7" r="1"/>
+                    <circle cx="7" cy="12" r="1"/>
+                    <circle cx="12" cy="12" r="1"/>
+                    <circle cx="17" cy="12" r="1"/>
+                    <circle cx="7" cy="17" r="1"/>
+                    <circle cx="12" cy="17" r="1"/>
+                    <circle cx="17" cy="17" r="1"/>
+                </svg>
+
+                <span>Tárgy PIN-kódja</span>
+
             </h3>
 
 
@@ -267,7 +306,11 @@
 
             <button id="checkPinBtn">
 
-                Ellenőrzés
+                <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M5 12l4 4L19 6"/>
+                </svg>
+
+                <span>Ellenőrzés</span>
 
             </button>
 
@@ -309,14 +352,31 @@
         style="display:none;"
     >
 
-        <h3>
-            📷 QR beolvasás
+        <h3 id="qrCim">
+
+            <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3" y="3" width="7" height="7"/>
+                <rect x="14" y="3" width="7" height="7"/>
+                <rect x="3" y="14" width="7" height="7"/>
+                <path d="M14 14h3v3h-3z"/>
+                <path d="M19 14v3"/>
+                <path d="M14 19h3"/>
+                <path d="M19 19h2"/>
+            </svg>
+
+            <span>QR beolvasás</span>
+
         </h3>
 
 
         <button id="scanBtn">
 
-            📷 Kód beolvasása
+            <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 7h4l2-2h4l2 2h4v12H4V7z"/>
+                <circle cx="12" cy="13" r="3.5"/>
+            </svg>
+
+            <span>Kód beolvasása</span>
 
         </button>
 
@@ -338,8 +398,36 @@
 
 
         <!-- QR EREDMÉNY -->
-
+        
         <p id="qr-result"></p>
+        
+        
+        <!-- SOUNDCLOUD -->
+                  
+          <button
+              id="soundcloudBtn"
+              style="display:none;"
+          >
+              <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4 12v-2"/>
+                  <path d="M7 15V9"/>
+                  <path d="M10 17V7"/>
+                  <path d="M13 15V9"/>
+                  <path d="M16 13v-2"/>
+                  <path d="M19 11v2"/>
+              </svg>
+              <span>SoundCloud meghallgatása</span>
+          </button>
+          
+          <button
+              id="soundcloudContinueBtn"
+              style="display:none;"
+          >
+              <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8 5l11 7-11 7V5z"/>
+              </svg>
+              <span>Tovább a kérdéshez</span>
+          </button>
 
 
     </div>
@@ -356,15 +444,16 @@
     >
 
         <h2>
-            🚪 KIJÁRAT
+
+            <svg class="ikon ikon-nagy" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 21V3h14v18"/>
+                <path d="M9 21V7l10-2v16"/>
+                <circle cx="15" cy="14" r="1"/>
+            </svg>
+
+            <span>KIJÁRAT</span>
+
         </h2>
-
-
-        <p>
-
-            Írd be az összegyűjtött kódot!
-
-        </p>
 
 
         <input
@@ -382,7 +471,13 @@
 
         <button id="kilepBtn">
 
-            🔓 Kijutás
+            <svg class="ikon" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="4" y="10" width="16" height="10" rx="2"/>
+                <path d="M8 10V7a4 4 0 0 1 8 0"/>
+                <circle cx="12" cy="15" r="1"/>
+            </svg>
+
+            <span>Kijutás</span>
 
         </button>
 
@@ -407,14 +502,14 @@
 
     <!-- ==================================================
          BIZTONSÁGI / KIEGÉSZÍTŐ VÉGEÜZENET
-         ================================================== -->
+         ================================================= -->
 
     <div
         id="vegeUzenetLegacy"
         style="display:none;"
-    >
+    >                    
 
-        🎉 Sikeresen kijutottál a játékból!
+        Sikeresen kijutottál a játékból!
 
     </div>
 
