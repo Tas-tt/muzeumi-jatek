@@ -8,7 +8,10 @@ const targyak = [
         qr: "https://soundcloud.com/janos-zsigmond-unitarius-kollegium/uszogolyo",
 
         segitseg: {
-            talalos:"Melyik két erő között létrejövő nyomaték fordítja vissza egyensúlyi állapotába a kibillent tárgyat?",
+            talalos: ` vizen uszok 
+                      es nem gurulok 
+                      kuzkodj barhogy 
+                      fel nem borulok`,
             kep:"images/uszogolyo.png"
         },
         quiz: {
@@ -28,7 +31,10 @@ const targyak = [
         nev: "Henley-féle elektromos kisütő",
         qr: "https://soundcloud.com/janos-zsigmond-unitarius-kollegium/henley-fele-elektromos-kisuto",
         segitseg: {
-            talalos:"Mi a mai megfelelője annak az eszköznek, amelyet régen a Leideni palackokhoz hasonlóan elektromos töltés tárolására használtak?",
+            talalos: `Két őr áll két oldalon,
+                      rúd nyúlik a vállukon.
+                      Középen egy korong ül,
+                      ha az áram gyűlik, kisül.`,
             kep:"images/henley.jpg"
         },
         quiz: {
@@ -48,7 +54,10 @@ const targyak = [
         nev: "Ruhmkorff-féle szikrainduktor",
         qr: "https://soundcloud.com/janos-zsigmond-unitarius-kollegium/ruhmkorff-fele-szikrainduktor",
         segitseg: {
-            talalos:"Ha a szerkezet nem indul el, melyik alkatrész finomhangolásával kelthetjük életre?",
+            talalos: `Nagy fa henger, rajta fém,
+                      különös szerkezet vagyok én.
+                      Ha működöm, szikra száll,
+                      vigyázz mert a hajad égnek áll.`,
             kep:"images/ruhmkorff.jpg"
         },
         quiz: {
@@ -68,8 +77,11 @@ const targyak = [
         nev: "Weinhold-féle piezométer",
         qr: "https://soundcloud.com/janos-zsigmond-unitarius-kollegium/weinhold-fele-piezometer",
         segitseg: {
-            talalos:"Egy üvegedényben egy gömb alakú belső edény látható. Milyen alakúnak látszik a gömb a víz fénytörése miatt?",
-            kep:"images/weinhold.jpg"
+            talalos:`Üveg alatt üveg golyó
+Nyomást mérek vele
+Vigyázz mert nem légből adó
+Hanem folyadék a neve. `,
+            kep:"images/weinhold.png"
         },
         quiz: {
             kerdes:"Milyen alakúnak látszik a gömb alakú belső edény a víz fénytörése miatt?",
@@ -88,8 +100,11 @@ const targyak = [
         nev: "Háromlábú réztartály",
         qr: "https://soundcloud.com/janos-zsigmond-unitarius-kollegium/haromlabu-reztartaly-es-segner-kerek",
         segitseg: {
-            talalos:"A kísérleti tárgy által bemutatott jelenség mely technológiai ágnak nyújtott segítséget?",
-            kep:"images/reztertaly.jpg"
+            talalos:`Három lábon állok,
+rézruhában járok.
+Nagy hasamban titkot rejtek,
+vajon mi lehetek?`,
+            kep:"images/reztartaly.png"
         },
         quiz: {
             kerdes:"A kísérleti tárgy által bemutatott jelenség mely technológiai ágnak nyújtott segítséget?",
@@ -108,7 +123,10 @@ const targyak = [
         nev: "Akromatikus prizma",
         qr: "https://soundcloud.com/janos-zsigmond-unitarius-kollegium/akromatikus-prizma",
         segitseg: {
-            talalos:"A szivárványhoz hasonlóan a fény különböző színekre bontható. Mi csökkenti a fény prizmán való áthaladásából keletkező színeltérést?",
+            talalos:`Fémkeretben üveg lapul,
+két kis részem együtt fordul.
+Állítható vagyok, fényt török,
+vajon melyik tárgy lehetek?`,
             kep:"images/akromatikus_prizma.jpg"
         },
         quiz: {
@@ -128,7 +146,10 @@ const targyak = [
         nev: "Az optikai szekrény",
         qr: "https://soundcloud.com/janos-zsigmond-unitarius-kollegium/az-optika-szekrenyei",
         segitseg: {
-            talalos:"Ebben a szekrényben található a legtöbb, fénnyel és optikával foglalkozó kísérleti eszköz. Melyik tudományterülethez kapcsolódhat?",
+            talalos:`Ajtóm mögött kincsek várnak,
+üveg, tükrök sorban állnak.
+Sok kis titkot rejtek én,
+az egyik sarok rejtekén.`,
             kep:"images/optikai_szekreny.jpg"
         },
         quiz: {
@@ -148,7 +169,10 @@ const targyak = [
         nev: "Egyszerű mikroszkóp",
         qr: "https://soundcloud.com/janos-zsigmond-unitarius-kollegium/egyszeru-mikroszkop",
         segitseg: {
-            talalos:"A távcső ellentéte: nem a távoli, hanem az apró dolgokat teszi láthatóvá. Miből készült a külső szerkezete?",
+            talalos:`Aprót nézek, nagyot látok,
+            egy fa állványon állok,
+Egy kis tükröm fényt keres,
+vajon ki vagyok, megfejtesz?`,
             kep:"images/egyszeru_mikroszkop.jpg"
         },
         quiz: {
@@ -168,8 +192,11 @@ const targyak = [
         nev: "Kaleidoszkóp",
         qr: "https://soundcloud.com/janos-zsigmond-unitarius-kollegium/kaleidoszkop",
         segitseg: {
-            talalos:"A szemed előtt tekerve végtelennek tűnő színjátékot láthatsz. Ki és mikor szabadalmaztatta ezt a találmányt?",
-            kep:"images/kaleidoszkop.jpg"
+            talalos:`Hosszú csőben tükrök bújnak,
+            színes képek előbújnak,
+            Ha megforgatsz, másképp látok,
+            hé! ...ne tátsátok szátok!`,
+            kep:"images/kaleidoszkop.png"
         },
         quiz: {
             kerdes:
@@ -197,7 +224,10 @@ const targyak = [
 
         segitseg: {
             talalos:
-                "Ezen tárgyal madaraktól egészen a Holdakig bármit megfigyelhetünk.",
+                `Hosszú csővel messze látok.
+távoli világot járok. 
+Közel hozom, mi messze jár,
+vajon mi lehetek, kitalálod már?`,
 
            kep:
                 "images/tavcso.jpg"
@@ -268,7 +298,7 @@ const targyak = [
                 "Hangokat képes rögzíteni és később vissza is játszani. Vajon melyik találmány tette lehetővé először a hang rögzítését?",
 
             kep:
-                "images/fonograf.jpg"
+                "images/fonograf.png"
         },
 
         quiz: {
@@ -401,7 +431,10 @@ const targyak = [
 
         segitseg: {
             talalos:
-                "Különböző fémlemezekből épül fel, és folyamatos elektromos áram előállítására képes. Mi volt a neve?",
+                  `Korong korong hátán,
+                   állok egymás nyakán.
+                   Réz és cink a testem,
+                   vajon ki lehettem?`,
 
             kep:
                 "images/volta_oszlop.jpg"
